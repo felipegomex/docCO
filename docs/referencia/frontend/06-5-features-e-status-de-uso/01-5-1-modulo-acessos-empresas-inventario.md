@@ -1,0 +1,40 @@
+---
+id: 06-5-features-e-status-de-uso.01
+titulo: "5.1 Módulo Acessos Empresas — inventário"
+tipo: referencia
+area: frontend
+sistema: central
+tags: [frontend, angular, componentes]
+status: ativo
+revisado_em: "2026-10-29"
+fonte:
+  - frontend/src/app
+testes:
+  - frontend/src/app
+tokens_estimados: 1994
+ficha: docs/modulos/acessos.md
+---
+> Parte de [5. Features e status de uso](./INDEX.md). Ficha: [Acessos Empresas](../../../modulos/acessos.md).
+
+### 5.1 Módulo Acessos Empresas — inventário
+
+Arquivos em [`features/acessos/`](../../../../frontend/src/app/features/acessos):
+
+| Arquivo | Papel |
+|---|---|
+| `acessos.model.ts` | Espelha `Dtos/Acessos/AcessosDtos.cs`: `Paginado<T>`, `EstadoCifra`, `RevelacaoSenha`, `ClienteErpResumo`, `ClienteCriarRequest` (**`clienteId` obrigatório**, `observacao?` e `acessos?`), `ClienteAtualizarRequest` (`ativo?`, `observacao?`), `ClienteCriarResponse` (`jaExistia` + `cliente`), `AutorizarRequest`/`AutorizarResponse` (`validoPor?`), o agregado `AcessosAgrupados` + as interfaces `Acesso{Rdp,Vpn,AnyDesk,Banco,ActyonWeb}Item`, os 5 `*Detalhe`/`*CriarRequest`/`*AtualizarRequest`, e as constantes `TIPOS_VPN`, `AMBIENTES_ACESSO`, `TIPOS_ACESSO` (com `tipo` técnico e `rotulo`/ícone de tela). `GrupoResumo` ficou só com `id`/`nome` (sem `ativo`); os DTOs de CRUD de grupos saíram. |
+| `acessos.service.ts` | `providedIn: 'root'`, `base = ${environment.apiBaseUrl}/acessos`. **33 métodos** cobrindo gate (`autorizar(clienteId, req)` — rota isenta de ticket no interceptor), diagnóstico, grupos (**somente leitura**, `tbcliente_grupo`), `buscarEmpresasErp` (typeahead do ERP), clientes (inclui `criarCliente` com o agregado `acessos`) e os 5 tipos. `excluirRdp/Vpn/AnyDesk/Banco/ActyonWeb(id, clienteAcessoId)` usam o id da **unidade** como chave do ticket `EDITAR` (o id do acesso causava 403). **Nenhum** método de AnyDesk/Banco para senha — o reflexo da restrição do backend; **nenhum** CRUD de grupos. |
+| `acessos.routes.ts` | Rotas lazy do módulo (ver 4.6) |
+| `acessos.scss` | Bloco de exibição de credencial **extraído** da antiga tela de 782 linhas, para ser reusado: `.campo-credencial`, `.campo-credencial__valor`, `.btn-toggle-senha`, `.btn-copiar`, `.btn-abrir` e o novo `.acesso-gate` |
+| `acessos-form.scss` | Partial **compartilhado** dos formulários: `.acesso-form__*` (campo, linha, check, erro) **e** o typeahead do ERP (`.acesso-erp__*`). Os três componentes de form/detalhe o declaram via `styleUrls` — necessário porque estilos de um componente Angular **não** alcançam o conteúdo renderizado por `NgbModal`. |
+| `pages/lista-clientes-cards/` | Grade de cards (`ListaClientesCardsComponent`): tela padrão `/acessos/clientes`. Breadcrumb manual `.acesso-breadcrumb` (Início → Acessos das Empresas), **linha de topo única** (`.acesso-total-linha`: card com o total de empresas + botão **Novo Acesso** — o único ponto de entrada do assistente, fora do header e do estado vazio), busca que filtra ao digitar com debounce de 300 ms (`buscaSubject` → `debounceTime`/`distinctUntilChanged`/`switchMap` → `GET /clientes`; `takeUntil(_destroy$)` + `ngOnDestroy`, `switchMap` cancela a anterior), cards com `min-height: 14rem`, badges dos **4 recursos** (BANCO saiu da grade: toda unidade tem banco), código do ERP como `#66` (sem o prefixo "ERP"), **badge de status** e **menu ⋮** sem caret (`editarUnidade()`, `excluirUnidade()`, `abrirVisualizarAcesso()`, `abrirDetalhe()`) e paginação. Estilos `.acesso-status`/`.acesso-menu`/`.acesso-total-linha` no SCSS do componente. |
+| `pages/lista-clientes/` | Lista paginada (`ListaClientesComponent`): `/acessos/clientes/tabela`. Busca com botão **Buscar** (`click` ou `Enter`, layout `.acesso-busca`); grupo e somente ativos filtram direto; estado da cifra no topo, abertura do `FormClienteComponent`; trata o retorno `{ jaExistia, cliente }` do modal (`toast.info` + navega para a unidade existente, ou `toast.sucesso` + recarrega). |
+| `pages/detalhe-cliente/` | Detalhe da unidade com **gate de senha**, 5 abas e o `FormAcessoComponent`. Cada acesso virou um **card** na grade `.acesso-cards`/`.acesso-cardacesso` (`acessos.scss`): título (`tituloCard`/`abaIcone`), pares rotulo/valor por tipo — no RDP, **Servidor** e **IP (`ip:porta`)** separados —, badge status, revelar senha (30 s, `REVEAL_SENHA`), copiar, editar, inativar (repassa `clienteId` como chave do ticket `EDITAR`) e link "Abrir Actyon Web" — em vez das antigas tabelas por tipo. |
+| `pages/form-cliente-modal/` | Modal de **edição** de unidade (a criação nova é só pelo wizard). **Em edição:** identidade (fantasia, CNPJ, grupo) exibida **somente leitura** vinda do ERP (aviso "corrija na fonte") e campos editáveis apenas **observação** e **situação** — o `@Input cliente` é um setter que inicializa `ativo` a partir da unidade (antes o modal sempre abria "ativa"); o `PUT` anexa `X-Acesso-Ticket` via `headers = headers.set(...)` (`HttpHeaders` é imutável). **Em criação residual:** apenas o typeahead ERP (`debounceTime(250)`, mínimo 2 caracteres, `GET /clientes/busca-erp`, `role="combobox"`, navegação ↑↓/Enter/Esc e `mousedown` antes do blur); selecionar chama `POST /clientes` com `{ clienteId }` e fecha com o resultado (`jaExistia`/`cliente`). **Não existe mais modo manual** (grupo/fantasia/CNPJ manuais e `normalizarCnpj` saíram; o `@Input grupos` foi removido dos callers). |
+| `pages/form-cliente-wizard/` | **Página roteada** em `/acessos/clientes/novo` (`FormClienteWizardComponent`, era modal órfão): 3 etapas — *Empresa* (typeahead ERP **obrigatório**: sem seleção o "Próximo" fica desabilitado e `validarStep1` bloqueia; **não há cadastro manual** — os campos de grupo/fantasia/CNPJ/observação manuais saíram do step 1; a seleção só preenche o resumo, nada é criado ainda), *Tipos de acesso* e *Configurar* (cards por tipo com `FormAcessoComponent` em modo coleta). Na etapa 2, o toggle dos tipos é `(change)` no checkbox (o antigo `(click)` no `<label>` com checkbox `display:none` disparava `toggleTipo` 2× por clique e nada selecionava). No final, exige ticket de criação (`exigir(0, 'EDITAR')`) e envia **um único** `POST /clientes` com `{ clienteId, acessos }`; trata `jaExistia` e navega para `/acessos/clientes/{id}`. |
+| `pages/form-acesso/` | **Form único** para os 5 tipos: os campos variam por `@Input tipo` e o mapeamento para cada endpoint fica isolado em `salvar()`. Ganhou `@Input() modoColeta` + `@Output() coletado`/`cancelado`: em modo coleta valida e **emite o item** sem HTTP (usado pelo wizard); fora dele, salva via API como antes. |
+| `pages/modal-senha/` | Modal de autorização com estrutura nativa Bootstrap (`modal-header`/`modal-body`/`modal-footer` — sem caixa azul interna, 1.5rem de respiro lateral): campo **Usuário** (digitado e conferido no backend contra o JWT, placeholder + ícone `bi-person`), Senha (ícone `bi-lock`, cantos 8px) e, em `VISUALIZAR`, o checkbox **"Lembrar por 5 minutos"** (`lembrar: true` ⇒ `validoPor` 300 s). Nota de auditoria como disclaimer discreto em box cinza (`gate-modal__nota`); ações no rodapé (`adm-btn--ghost` Cancelar / `adm-btn--primary` Confirmar com `bi-lock`). Erros 401/429 traduzidos com a contagem de tentativas restantes. |
+| `pages/visualizar-acesso-modal/` | Modal "Acessos da Unidade" (`size: 'xl'`, abre por `abrirVisualizarAcesso` no card + ticket `VISUALIZAR`): abas **Visualizar** (cards por tipo com pills RDP/VPN/AnyDesk/Banco de Dados/Actyon Web — no RDP, **Servidor** e **IP (`ip:porta`)** separados com cópia própria —, busca livre, copiar por campo, `<pre>` copiável para o arquivo de configuração VPN/Banco) e **Gerenciar** (embute o detalhe com as mesmas pills e busca). Recarrega ao voltar do Gerenciar sem F5; ticket com contagem regressiva de 2 min no cabeçalho. |
+
+`lista-clientes.component.scss` continua com `@use '../../acessos.scss'` e `@use '../../../dashboard/shared/dash-kpis.scss'`, mas **o bloco `.acesso-form__*` saiu de lá** para `acessos-form.scss`. Os forms (`form-cliente-modal`, `form-acesso`, `detalhe-cliente`) declaram `styleUrls` apontando para o partial — sem isso, o estilo não alcança o DOM do modal.
+

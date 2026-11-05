@@ -1,0 +1,41 @@
+---
+id: sec.21-limitacoes-e-pontos-que-nao-puderam-ser-confirmados
+titulo: "Limitações e pontos que não puderam ser confirmados"
+tipo: referencia
+area: qa
+sistema: central
+tags: [qa, historias, testes]
+status: ativo
+revisado_em: "2026-10-29"
+fonte:
+  - frontend/src/app
+  - backend/Central_BackEnd
+testes:
+  - backend/Central_BackEnd.Tests
+tokens_estimados: 2025
+ficha: docs/modulos/README.md
+---
+> Ficha: [Fichas de módulo](../../modulos/README.md).
+
+> Parte de [docs/referencia/qa-historias.md](../qa-historias.md).
+
+# Limitações e pontos que não puderam ser confirmados
+
+1. Não foram confirmadas respostas de execução para SQL Server, AnythingLLM, Claude, Gitea, permissões reais de cada operador ou persistência das escritas; as histórias foram confrontadas com o código, não com uma sessão de produção/homologação.
+2. Não foram encontrados testes end-to-end nem suítes que cubram Login, Acessos, Agenda, Database ou a **tela** do Kanban. A suíte frontend tem **177 casos** (171 executados + 6 não executados: 2 de Visto, 3 do avatar e 1 de busca por protocolo/telefone) — 12 deles no formulário de Tarefa. O `validate.ps1` passou a executar `ng test` (passo 6/7); número de casos permanece o medido em 2026-10-26. Os dois casos de `revisorGuard` e os specs do chat (removidos no `cb36ad3`) não cobrem a integração real nem a UI. Execução de 2026-10-26: frontend **171 verdes**; o backend foi medido em **921 verdes** por `dotnet test` em 2026-10-27 (após as suítes de hierarquia da matriz e do leitor CIAA) e o `scripts/validate.ps1` do commit das features **passou verde**; HML e PROD foram publicados com smoke 5/5.
+3. O chat é iframe para o AnythingLLM autenticado por SSO; o conteúdo trafega pelo AnythingLLM e pelos provedores configurados nele. O widget global e o contrato `/api/chat/perguntar` não existem mais (`cb36ad3`, 2026-11-03). Migration, mapeamentos e serviços externos foram aplicados (SQL em 2026-10-30); verificação fim-a-fim em ambiente real permanece manual.
+4. O logout pode não revogar o refresh quando o `/auth/logout` chega sem Bearer; `cc_refresh` também está configurado com `Secure=false` no código atual.
+5. O filtro Database “Apenas possíveis” compara `possivel` com `possivei`; a opção “Sem projeto” da lista de tarefas e os atalhos do Dashboard não são consumidos de forma confiável. O projeto da tarefa é imutável pelo formulário de edição e a etapa só pode ser escolhida entre as etapas do projeto atual.
+6. PUTs parciais do Kanban podem apagar dados; WIP, `Minhas tarefas` e autorizações não são garantidos uniformemente. No Kanban Geral, as ações em lote enviam `bloqueada=false`, o que **fecha** um bloqueio aberto, e a matriz de permissão é replicada no cliente (divergência possível em relação ao backend).
+7. O modal/retorno de etapas pode falhar; documentos usam URL temporária `blob:` e a exclusão não está implementada no backend.
+8. A edição de Agenda pode limpar participantes/SLA, e a verificação de conflitos considera apenas o responsável, não participantes.
+9. Credenciais de Acessos viajam no corpo da API em claro; a máscara da tela não protege o transporte. A escrita nova é cifrada com AES-256-GCM; linhas antigas sem `v1:` podem continuar em texto puro até o backfill. `tboperador.SENHA` é `varchar(10)` em texto claro, fora do alcance da nova cifra. A tela revela a senha por 30 s e só em RDP/VPN.
+10. O Admin Dashboard não tem rota/menu; se chamado diretamente, mistura filtros de arquivamento e retorna contadores por função iguais a zero, tornando as métricas inconsistentes.
+11. `ClienteObrigatorio` não é aplicado de forma consistente pelo formulário/serviço de Projetos; as verificações de WIP e de papel variam conforme o endpoint.
+12. O `GET /api/v1/auth/me` existe, mas não é usado pelo frontend; `/admin/projetos/:id` e outros links de compatibilidade não estão declarados.
+13. O atraso de faturamento do módulo Financeiro é inferido do **dia do mês** configurado no contrato (`DIA_FATURAMENTO`), porque o legado não guarda data de faturamento; o modelo não distingue faturamento ainda não emitido de inadimplência real. Além disso, faturamento e atraso estão **desligados** (`FlagsDashboard.FaturamentoLiberado = false`): `/financeiro/kpis` devolve esses campos em `0` e `/financeiro/atrasos` devolve lista vazia, por decisão do usuário — a informação ainda não foi liberada. Religar é trocar a constante para `true`.
+14. O flag "cliente viu o contato" e o badge "aguardando resposta" são estados independentes: nada no código os mantém sincronizados, e ambos podem se contradizer no mesmo card.
+15. Contrato sem `DATA_PROXIMO_REAJUSTE` devolve `diasParaReajuste = null` (não `0`); qualquer filtro de reajuste no frontend precisa testar `diasParaReajuste !== null`. Antes, dos 102 itens mostrados no alerta da tela Administrativa, **101 eram falsos** (sem data) e só 1 real (contrato 163 / GESTART, 23 dias). O alerta foi removido junto com os cards de faturamento; o endpoint `/administrativo/contratos` continua existindo.
+16. Acessos Empresas não tem segregação por perfil: qualquer operador autenticado gerencia unidades e credenciais (grupos são somente leitura, vindos de `tbcliente_grupo`). A fila de auditoria é assíncrona e pode perder evento se o processo encerrar com a fila cheia (contador em `GET /acessos/estado-cifra`).
+17. **Atendimento WhatsApp:** o módulo está **publicado em HML e PROD**, e o **piloto foi executado em 2026-10-21** — schema aplicado em `dbBUSINESS_HML`, gateway OpenWA v0.25.0 **no ar** na VM Ubuntu `192.168.2.253` (porta `2785` restrita por firewall na cadeia `DOCKER-USER`), webhook validado ponta a ponta e **número de teste pareado** (sessão `central-wa-7`, `ready`, telefone `558592644863`), com mensagens reais recebidas, primeira resposta assumindo o atendimento, resolução e reabertura. A **produção (`.254`) foi publicada em 2026-10-26** (smoke 5/5); depois do **reset de 2026-10-27** o gateway ficou **sem sessões** e precisa de um número reconectado antes do QA manual. Das 19 histórias (WA-01 a WA-19), **WA-01, WA-02, WA-05 e WA-06** foram exercitadas no piloto; as demais **não foram executadas** como QA. **Cinco defeitos do piloto foram encontrados e corrigidos em 2026-10-21** (`404` do gateway por `BaseUrl` sem barra final, `500` de tradução de query no SQL Server, `400` do QR por sessão não iniciada, sessão órfã no gateway e `500` de corpo vazio por `web.config` com o schema errado) — o diagnóstico está em [`troubleshooting.md`](../../operacao/troubleshooting.md) §19.9 e os cenários correspondentes em WA-11 a WA-15; **três defeitos novos** foram encontrados depois (erro 8152 por nome do evento em coluna curta, linha de fila presa em "processando" e `lastActive` do gateway tipado como número) — diagnóstico em §19.10 e cenários em WA-16 a WA-19. As histórias **WA-38 a WA-43** (novo ciclo Service Desk, Fases 01–05 de [`material-de-projeto/atendimento-whatsapp/README.md`](../../../material-de-projeto/atendimento-whatsapp/README.md)) cobrem o vínculo do contato com o ERP (com 409 de concorrência e 403 de admin), o layout Service Desk em 3 colunas recolhíveis, o contexto do cliente, o compositor com seletor de destino e o SLA com situação `critico` configurável; **WA-44 a WA-50** cobrem a **Fase 06** (etiquetas, investigação e observação do atendimento); **WA-51 a WA-57** cobrem a **Fase 07** (Kanban Service Desk: card completo, cliente pendente, etiquetas + contador, badge de investigação sem coluna nova, filtros server-side que atualizam total/paginação, SLA crítico por dimensão e ações por status/permissão), com 15 casos em `WhatsAppKanbanServiceDeskTests` e 13 no frontend. Todas são derivadas do código e **não executadas** como QA — as da Fase 06 têm cobertura unitária em `WhatsAppEtiquetaTests` e nos specs de `EtiquetaSelectorComponent`/`InternalNoteComponent`. Os cenários **WA-30/32–37** ficam no fim do apêndice por acidente de inserção anterior (métricas de qualidade/clientes, auditoria, IA e Kanban com arquivados) e seguem válidos; **não existe WA-31**. O gateway usa cliente não oficial do WhatsApp (risco de restrição/bloqueio do número); o canal é HTTP na rede interna (gateway na VM → servidor da Central, com a porta `2785` restrita a `.130` e `.254`); e o `appsettings.json` publicado do servidor ainda contém `Jwt:Key` em texto claro.
+

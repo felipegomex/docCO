@@ -1,0 +1,1003 @@
+# Índice máquina-legível da documentação (Fase 2c da reorganização).
+# Regra: só valores vindos dos canônicos, das fichas ou do código.
+# Campo sem fonte fica null ou é omitido.
+
+versao: 2
+verificado_em: "2026-10-29"   # Fases 1/2 do plano eficiencia-contexto (manifest + MAP + lint + fichas)
+
+entrada:
+  nome: README
+  id: readme
+  caminho: docs/README.md
+  tipo: entrada
+  area: navegacao
+  sistema: central
+  tags: [entrada, indice, navegacao]
+  fonte:
+    - docs/README.md
+  testes: []
+  tokens_estimados: 5211
+  revisado_em: "2026-10-28"
+  secoes: []
+  intencoes: [comecar, indice, navegacao, documentacao]
+  papel: matriz de navegação dos 12 canônicos (docs/README.md, § "Matriz")
+
+canonicos:
+  arquitetura:
+    - nome: estrutura-projeto
+      id: estrutura-projeto
+      caminho: docs/arquitetura/estrutura-projeto/INDEX.md
+      tipo: arquitetura
+      area: processo
+      sistema: central
+      tags: [monorepo, convencoes, segredos, pipeline, agents, skills]
+      fonte:
+        - AGENTS.md
+        - scripts/validate.ps1
+        - scripts/check-secrets.ps1
+      testes: []
+      tokens_estimados: 390
+      revisado_em: "2026-10-28"
+      secoes:
+        - docs/arquitetura/estrutura-projeto/INDEX.md
+        - docs/arquitetura/estrutura-projeto/01-1-como-ler.md
+        - docs/arquitetura/estrutura-projeto/02-2-o-monorepo-real.md
+        - docs/arquitetura/estrutura-projeto/03-3-documentacao-canonica.md
+        - docs/arquitetura/estrutura-projeto/05-5-branches-working-tree-e-pipeline.md
+        - docs/arquitetura/estrutura-projeto/06-6-agents-e-skills-do-opencode.md
+        - docs/arquitetura/estrutura-projeto/07-7-scripts-screens-data-json.md
+      intencoes: [estrutura, monorepo, convencoes, segredos, pipeline, agents, skills]
+    - nome: visao-geral
+      id: visao-geral
+      caminho: docs/arquitetura/visao-geral/INDEX.md
+      tipo: arquitetura
+      area: produto
+      sistema: central
+      tags: [modulos, rotas, ambientes, roadmap]
+      fonte:
+        - frontend/src/app/features.routes.ts
+        - backend/Central_BackEnd/Program.cs
+      testes: []
+      tokens_estimados: 481
+      revisado_em: "2026-10-28"
+      secoes:
+        - docs/arquitetura/visao-geral/INDEX.md
+        - docs/arquitetura/visao-geral/01-busca-rapida-ctrl-f.md
+        - docs/arquitetura/visao-geral/02-1-proposito.md
+        - docs/arquitetura/visao-geral/03-2-publico-e-acesso.md
+        - docs/arquitetura/visao-geral/04-3-modulos-e-rotas-ativas.md
+        - docs/arquitetura/visao-geral/05-3-modulos-e-rotas-ativas-parte-2.md
+        - docs/arquitetura/visao-geral/06-4-stack-real.md
+        - docs/arquitetura/visao-geral/07-5-ambientes-reais.md
+        - docs/arquitetura/visao-geral/08-6-seguranca-resumida.md
+        - docs/arquitetura/visao-geral/09-7-roadmap-atual-plano-e-historico.md
+      intencoes: [visao geral, modulos, rotas, ambientes, roadmap]
+    - nome: componentes
+      id: componentes
+      caminho: docs/arquitetura/componentes/INDEX.md
+      tipo: arquitetura
+      area: arquitetura
+      sistema: central
+      tags: [angular, aspnet, sqlserver, jwt, cors, iis, chat, rag]
+      fonte:
+        - frontend/src/app
+        - backend/Central_BackEnd
+        - backend/Central_BackEnd/Program.cs
+      testes: []
+      tokens_estimados: 376
+      revisado_em: "2026-10-28"
+      secoes:
+        - docs/arquitetura/componentes/INDEX.md
+        - docs/arquitetura/componentes/01-busca-rapida-ctrl-f.md
+        - docs/arquitetura/componentes/02-1-escopo-e-topologia.md
+        - docs/arquitetura/componentes/03-2-componentes-e-pastas-reais.md
+        - docs/arquitetura/componentes/04-3-frontend-angular.md
+        - docs/arquitetura/componentes/05-4-backend-asp-net-core.md
+        - docs/arquitetura/componentes/06-5-versionamento-e-superficie-http.md
+        - docs/arquitetura/componentes/07-6-autenticacao-e-tokens.md
+        - docs/arquitetura/componentes/08-7-integracoes-de-dados.md
+        - docs/arquitetura/componentes/09-8-cors-iis-e-publicacao.md
+        - docs/arquitetura/componentes/10-9-controles-e-limites-de-seguranca.md
+      intencoes: [arquitetura, componentes, jwt, cors, iis, chat, rag, anythingllm]
+    - nome: banco-dados
+      id: banco-dados
+      caminho: docs/arquitetura/banco-dados/INDEX.md
+      tipo: referencia
+      area: dados
+      sistema: central
+      tags: [schema, sqlserver, migrations, entidades, tabelas]
+      fonte:
+        - backend/Central_BackEnd/Data/AppDbContext.cs
+        - backend/Central_BackEnd/Models
+        - backend/Central_BackEnd/Migrations
+      testes:
+        - backend/Central_BackEnd.Tests
+      tokens_estimados: 478
+      revisado_em: "2026-10-28"
+      intencoes: [tabela, coluna, schema, migration, entidade, banco, sqlserver]
+      secoes:
+        - docs/arquitetura/banco-dados/01-indice-para-busca.md
+        - docs/arquitetura/banco-dados/02-padrao-de-nomenclatura-canonico.md
+        - docs/arquitetura/banco-dados/03-contagens-confirmadas.md
+        - docs/arquitetura/banco-dados/04-fontes-de-verdade.md
+        - docs/arquitetura/banco-dados/05-provider-de-persistencia.md
+        - docs/arquitetura/banco-dados/06-inventario-de-entidades-e-tabelas/INDEX.md
+        - docs/arquitetura/banco-dados/06-inventario-de-entidades-e-tabelas/01-introducao.md
+        - docs/arquitetura/banco-dados/06-inventario-de-entidades-e-tabelas/02-introducao-parte-2.md
+        - docs/arquitetura/banco-dados/06-inventario-de-entidades-e-tabelas/03-modulo-de-ideias-seis-tabelas-quatro-indices-unicos-filtrado.md
+        - docs/arquitetura/banco-dados/06-inventario-de-entidades-e-tabelas/04-modulo-de-atendimento-whatsapp-21-tabelas-scripts-proprios.md
+        - docs/arquitetura/banco-dados/06-inventario-de-entidades-e-tabelas/05-modulo-de-atendimento-whatsapp-21-tabelas-scripts-proprios-i.md
+        - docs/arquitetura/banco-dados/06-inventario-de-entidades-e-tabelas/06-largura-do-wat-status-varchar-50-nao-20.md
+        - docs/arquitetura/banco-dados/06-inventario-de-entidades-e-tabelas/07-rbac-cargo-catalogo-de-recursos-e-excecoes-2026-10-21.md
+        - docs/arquitetura/banco-dados/06-inventario-de-entidades-e-tabelas/08-modulo-acessos-empresas-nomenclatura-chaves-e-armadilhas.md
+        - docs/arquitetura/banco-dados/06-inventario-de-entidades-e-tabelas/09-cifra-das-senhas-icifrador-e-como-religar.md
+        - docs/arquitetura/banco-dados/06-inventario-de-entidades-e-tabelas/10-trilha-de-auditoria-duas-vias.md
+        - docs/arquitetura/banco-dados/06-inventario-de-entidades-e-tabelas/11-tbcontrato-colunas-mapeadas-e-regras-do-espelho.md
+        - docs/arquitetura/banco-dados/06-inventario-de-entidades-e-tabelas/12-modelos-que-nao-sao-tabelas.md
+        - docs/arquitetura/banco-dados/07-relacionamentos-confirmados.md
+        - docs/arquitetura/banco-dados/08-coluna-gerida-tblead-lead-contatovisualizado.md
+        - docs/arquitetura/banco-dados/09-colunas-geridas-funil-comercial-com-produtos-2026-10-08.md
+        - docs/arquitetura/banco-dados/10-migrations-e-tabelas-historicas/INDEX.md
+        - docs/arquitetura/banco-dados/10-migrations-e-tabelas-historicas/01-introducao.md
+        - docs/arquitetura/banco-dados/10-migrations-e-tabelas-historicas/02-introducao-parte-2.md
+        - docs/arquitetura/banco-dados/10-migrations-e-tabelas-historicas/03-20260929221556-setorparafuncao-o-que-os-dois-scripts-fazem.md
+        - docs/arquitetura/banco-dados/10-migrations-e-tabelas-historicas/04-colunasporfuncao-backfill-idempotente-sql-colunas-proprias-p.md
+        - docs/arquitetura/banco-dados/10-migrations-e-tabelas-historicas/05-colunascompartilhadas-idempotente-sql-catalogo-compartilhado.md
+        - docs/arquitetura/banco-dados/10-migrations-e-tabelas-historicas/06-20260929034944-kanbangeral-setoresetapasbloqueios-o-que-o-sc.md
+        - docs/arquitetura/banco-dados/10-migrations-e-tabelas-historicas/07-20260928212856-acessosempresas-em-detalhe.md
+        - docs/arquitetura/banco-dados/10-migrations-e-tabelas-historicas/08-20260926010406-padraotabelastb-em-detalhe.md
+        - docs/arquitetura/banco-dados/10-migrations-e-tabelas-historicas/09-20260926022906-renomeiaindicespktb-em-detalhe.md
+        - docs/arquitetura/banco-dados/11-fusao-de-cc-funcao-na-legada-tbfuncao.md
+        - docs/arquitetura/banco-dados/12-tabelas-removidas-e-correcao-factual.md
+        - docs/arquitetura/banco-dados/13-migrations-carimbadas-manualmente-e-armadilhas-de-historico.md
+        - docs/arquitetura/banco-dados/14-refresh-tokens-e-auditoria.md
+        - docs/arquitetura/banco-dados/15-database-explorer.md
+        - docs/arquitetura/banco-dados/16-seguranca-e-dados-sensiveis.md
+        - docs/arquitetura/banco-dados/17-contagens-e-fatos-confirmados-no-baseline.md
+  referencia:
+    - nome: regras-negocio
+      id: regras-negocio
+      caminho: docs/referencia/regras-negocio/INDEX.md
+      tipo: referencia
+      area: negocio
+      sistema: central
+      tags: [regras, permissoes, rbac, faturamento, kanban, acessos, whatsapp, chat]
+      fonte:
+        - backend/Central_BackEnd/Services
+        - backend/Central_BackEnd/Controllers
+      testes:
+        - backend/Central_BackEnd.Tests
+      tokens_estimados: 695
+      revisado_em: "2026-10-28"
+      secoes:
+        - docs/referencia/regras-negocio/INDEX.md
+        - docs/referencia/regras-negocio/01-indice-para-busca.md
+        - docs/referencia/regras-negocio/02-legenda-de-situacao.md
+        - docs/referencia/regras-negocio/03-autenticacao-e-refresh.md
+        - docs/referencia/regras-negocio/04-prazo-e-atraso-regra-unica.md
+        - docs/referencia/regras-negocio/05-data-de-conclusao-real-preenchida-pelo-servidor.md
+        - docs/referencia/regras-negocio/06-bloqueios-wip-e-arquivamento.md
+        - docs/referencia/regras-negocio/07-apontamentos-de-horas.md
+        - docs/referencia/regras-negocio/08-sincronizacao-tarefa-agenda.md
+        - docs/referencia/regras-negocio/09-etapas-do-projeto.md
+        - docs/referencia/regras-negocio/10-propriedade-perfis-e-permissoes.md
+        - docs/referencia/regras-negocio/11-rbac-cargo-recurso-acao-e-escopo.md
+        - docs/referencia/regras-negocio/12-gestao-de-operadores-master-tech-lead-e-limites.md
+        - docs/referencia/regras-negocio/13-kanban-geral-funcao-permissao-por-funcao-e-bloqueio.md
+        - docs/referencia/regras-negocio/14-dashboard-integrado-comercial-administrativo-financeiro.md
+        - docs/referencia/regras-negocio/15-modulo-ideias-gestores-por-setor-e-exclusao-administrativa.md
+        - docs/referencia/regras-negocio/16-modulo-de-atendimento-whatsapp-atribuicao-ciclo-de-vida-e-ag.md
+        - docs/referencia/regras-negocio/17-restricao-permanente-banco-legado-em-compatibilidade-sql-200.md
+        - docs/referencia/regras-negocio/18-historico-de-contatos-do-lead-prospeccao.md
+        - docs/referencia/regras-negocio/19-conflitos-de-agenda.md
+        - docs/referencia/regras-negocio/20-codigo-global-de-projeto-prj.md
+        - docs/referencia/regras-negocio/21-modulo-acessos-empresas.md
+        - docs/referencia/regras-negocio/22-dados-sensiveis.md
+        - docs/referencia/regras-negocio/23-divergencias-e-correcoes-sugeridas.md
+        - docs/referencia/regras-negocio/24-contagens-e-fatos-confirmados.md
+        - docs/referencia/regras-negocio/25-atendimento-whatsapp-protocolo-foto-telefone-e-schema.md
+      intencoes: [regra de negocio, permissao, rbac, faturamento, contrato, kanban, acessos, whatsapp, chat]
+    - nome: endpoints
+      id: endpoints
+      caminho: docs/referencia/endpoints.md
+      tipo: referencia
+      area: api
+      sistema: central
+      tags: [api, rest, rotas, contratos, autorizacao]
+      fonte:
+        - backend/Central_BackEnd/Controllers
+      testes:
+        - backend/Central_BackEnd.Tests/Api
+      tokens_estimados: 2457
+      revisado_em: "2026-10-28"
+      secoes:
+        - docs/referencia/endpoints/raiz/INDEX.md
+        - docs/referencia/endpoints/raiz/01-autenticacao.md
+        - docs/referencia/endpoints/raiz/02-acessos-empresas.md
+        - docs/referencia/endpoints/raiz/03-auditoria.md
+        - docs/referencia/endpoints/raiz/04-agenda.md
+        - docs/referencia/endpoints/raiz/05-dashboard-comercial-comercialcontroller.md
+        - docs/referencia/endpoints/raiz/06-contextoprojetocontroller-ia.md
+        - docs/referencia/endpoints/raiz/07-docscontroller-docs-leitura-da-documentacao-sincronizada.md
+        - docs/referencia/endpoints/raiz/08-funcoes-funcoescontroller-da-raiz-rota-funcoes.md
+        - docs/referencia/endpoints/raiz/09-gestorescontroller-gestores.md
+        - docs/referencia/endpoints/raiz/10-ideias-ideiascontroller-ideias.md
+        - docs/referencia/endpoints/raiz/11-ideiasseedcontroller-ideias-seed.md
+        - docs/referencia/endpoints/raiz/12-operadorescontroller-operadores.md
+        - docs/referencia/endpoints/raiz/13-permissoescontroller-permissoes.md
+        - docs/referencia/endpoints/raiz/14-cargoscontroller-cargos.md
+        - docs/referencia/endpoints/raiz/15-chat-de-conhecimento.md
+        - docs/referencia/endpoints/raiz/16-conhecimento-e-revisao-documental.md
+        - docs/referencia/endpoints/raiz/17-exemplos-minimos-confirmados-raiz.md
+        - docs/referencia/endpoints/raiz/18-erros-confirmados-raiz.md
+        - docs/referencia/endpoints/raiz/19-limitacoes-conhecidas-historico-da-pasta-raiz.md
+        - docs/referencia/endpoints/implantacao/INDEX.md
+        - docs/referencia/endpoints/implantacao/01-tipos-de-projeto.md
+        - docs/referencia/endpoints/implantacao/02-colunas-kanban.md
+        - docs/referencia/endpoints/implantacao/03-kanban-geral-quadro-funcoes-etapas-da-funcao-bloqueios-e-gar.md
+        - docs/referencia/endpoints/implantacao/04-projetos.md
+        - docs/referencia/endpoints/implantacao/05-tarefas.md
+        - docs/referencia/endpoints/implantacao/06-dashboard-de-implantacao.md
+        - docs/referencia/endpoints/implantacao/07-dashboard-administrativo.md
+        - docs/referencia/endpoints/implantacao/08-exemplos-minimos-confirmados-implantacao.md
+        - docs/referencia/endpoints/implantacao/09-erros-confirmados-implantacao.md
+        - docs/referencia/endpoints/implantacao/10-limitacoes-confirmadas-de-consulta-e-calculo-implantacao.md
+        - docs/referencia/endpoints/implantacao/11-limitacoes-de-contrato-a-corrigir-implantacao.md
+        - docs/referencia/endpoints/dashboard.md
+        - docs/referencia/endpoints/database.md
+        - docs/referencia/endpoints/whatsapp/INDEX.md
+        - docs/referencia/endpoints/whatsapp/01-atendimentos-atendimentos.md
+        - docs/referencia/endpoints/whatsapp/02-etiquetas-etiquetas-fase-06.md
+        - docs/referencia/endpoints/whatsapp/03-midia-das-mensagens-mensagens.md
+        - docs/referencia/endpoints/whatsapp/04-numeros-numeros.md
+        - docs/referencia/endpoints/whatsapp/05-webhook-webhook.md
+        - docs/referencia/endpoints/whatsapp/06-metricas-e-saude.md
+        - docs/referencia/endpoints/whatsapp/07-respostas-rapidas-respostas-rapidas.md
+        - docs/referencia/endpoints/whatsapp/08-configuracao-e-monitor.md
+        - docs/referencia/endpoints/whatsapp/09-sla-sla.md
+        - docs/referencia/endpoints/whatsapp/10-retencao-de-midia-retencao.md
+        - docs/referencia/endpoints/whatsapp/11-contatos-contatos.md
+        - docs/referencia/endpoints/whatsapp/12-grupos-grupos.md
+        - docs/referencia/endpoints/whatsapp/13-admin-contatos-admin-contatos-fase-08.md
+        - docs/referencia/endpoints/whatsapp/14-auditoria-auditoria-fase-f.md
+        - docs/referencia/endpoints/whatsapp/15-ia-ia-fase-g.md
+        - docs/referencia/endpoints/whatsapp/16-tempo-real-signalr-hubs-whatsapp-fase-09.md
+        - docs/referencia/endpoints/whatsapp/17-observacoes-de-contrato.md
+        - docs/referencia/endpoints/whatsapp/18-observacoes-de-contrato-gateway-e-rodadas.md
+      intencoes: [endpoint, api, rota, contrato, autorizacao, http]
+      secoes:
+        - docs/referencia/endpoints/raiz/INDEX.md
+        - docs/referencia/endpoints/raiz/01-autenticacao.md
+        - docs/referencia/endpoints/raiz/02-acessos-empresas.md
+        - docs/referencia/endpoints/raiz/03-auditoria.md
+        - docs/referencia/endpoints/raiz/04-agenda.md
+        - docs/referencia/endpoints/raiz/05-dashboard-comercial-comercialcontroller.md
+        - docs/referencia/endpoints/raiz/06-contextoprojetocontroller-ia.md
+        - docs/referencia/endpoints/raiz/07-docscontroller-docs-leitura-da-documentacao-sincronizada.md
+        - docs/referencia/endpoints/raiz/08-funcoes-funcoescontroller-da-raiz-rota-funcoes.md
+        - docs/referencia/endpoints/raiz/09-gestorescontroller-gestores.md
+        - docs/referencia/endpoints/raiz/10-ideias-ideiascontroller-ideias.md
+        - docs/referencia/endpoints/raiz/11-ideiasseedcontroller-ideias-seed.md
+        - docs/referencia/endpoints/raiz/12-operadorescontroller-operadores.md
+        - docs/referencia/endpoints/raiz/13-permissoescontroller-permissoes.md
+        - docs/referencia/endpoints/raiz/14-cargoscontroller-cargos.md
+        - docs/referencia/endpoints/raiz/15-chat-de-conhecimento.md
+        - docs/referencia/endpoints/raiz/16-conhecimento-e-revisao-documental.md
+        - docs/referencia/endpoints/raiz/17-exemplos-minimos-confirmados-raiz.md
+        - docs/referencia/endpoints/raiz/18-erros-confirmados-raiz.md
+        - docs/referencia/endpoints/raiz/19-limitacoes-conhecidas-historico-da-pasta-raiz.md
+        - docs/referencia/endpoints/implantacao/INDEX.md
+        - docs/referencia/endpoints/implantacao/01-tipos-de-projeto.md
+        - docs/referencia/endpoints/implantacao/02-colunas-kanban.md
+        - docs/referencia/endpoints/implantacao/03-kanban-geral-quadro-funcoes-etapas-da-funcao-bloqueios-e-gar.md
+        - docs/referencia/endpoints/implantacao/04-projetos.md
+        - docs/referencia/endpoints/implantacao/05-tarefas.md
+        - docs/referencia/endpoints/implantacao/06-dashboard-de-implantacao.md
+        - docs/referencia/endpoints/implantacao/07-dashboard-administrativo.md
+        - docs/referencia/endpoints/implantacao/08-exemplos-minimos-confirmados-implantacao.md
+        - docs/referencia/endpoints/implantacao/09-erros-confirmados-implantacao.md
+        - docs/referencia/endpoints/implantacao/10-limitacoes-confirmadas-de-consulta-e-calculo-implantacao.md
+        - docs/referencia/endpoints/implantacao/11-limitacoes-de-contrato-a-corrigir-implantacao.md
+        - docs/referencia/endpoints/dashboard.md
+        - docs/referencia/endpoints/database.md
+        - docs/referencia/endpoints/whatsapp/INDEX.md
+        - docs/referencia/endpoints/whatsapp/01-atendimentos-atendimentos.md
+        - docs/referencia/endpoints/whatsapp/02-etiquetas-etiquetas-fase-06.md
+        - docs/referencia/endpoints/whatsapp/03-midia-das-mensagens-mensagens.md
+        - docs/referencia/endpoints/whatsapp/04-numeros-numeros.md
+        - docs/referencia/endpoints/whatsapp/05-webhook-webhook.md
+        - docs/referencia/endpoints/whatsapp/06-metricas-e-saude.md
+        - docs/referencia/endpoints/whatsapp/07-respostas-rapidas-respostas-rapidas.md
+        - docs/referencia/endpoints/whatsapp/08-configuracao-e-monitor.md
+        - docs/referencia/endpoints/whatsapp/09-sla-sla.md
+        - docs/referencia/endpoints/whatsapp/10-retencao-de-midia-retencao.md
+        - docs/referencia/endpoints/whatsapp/11-contatos-contatos.md
+        - docs/referencia/endpoints/whatsapp/12-grupos-grupos.md
+        - docs/referencia/endpoints/whatsapp/13-admin-contatos-admin-contatos-fase-08.md
+        - docs/referencia/endpoints/whatsapp/14-auditoria-auditoria-fase-f.md
+        - docs/referencia/endpoints/whatsapp/15-ia-ia-fase-g.md
+        - docs/referencia/endpoints/whatsapp/16-tempo-real-signalr-hubs-whatsapp-fase-09.md
+        - docs/referencia/endpoints/whatsapp/17-observacoes-de-contrato.md
+        - docs/referencia/endpoints/whatsapp/18-observacoes-de-contrato-gateway-e-rodadas.md
+    - nome: whatsapp-referencia
+      id: whatsapp-referencia
+      caminho: docs/referencia/whatsapp/INDEX.md
+      tipo: referencia
+      area: atendimento
+      sistema: central
+      tags: [whatsapp, atendimento, servicos, contratos, testes, operacao]
+      fonte:
+        - backend/Central_BackEnd/Services/WhatsApp
+        - frontend/src/app/features/whatsapp
+      testes:
+        - backend/Central_BackEnd.Tests
+      tokens_estimados: 366
+      revisado_em: "2026-11-03"
+      intencoes: [whatsapp, implementacao, servicos, contratos, testes, operacao]
+      secoes:
+        - docs/referencia/whatsapp/INDEX.md
+        - docs/referencia/whatsapp/01-servicos-e-mapeamento.md
+        - docs/referencia/whatsapp/02-regras-e-contratos-do-modulo.md
+        - docs/referencia/whatsapp/03-testes-pendencias-e-operacao.md
+    - nome: frontend
+      id: frontend
+      caminho: docs/referencia/frontend/INDEX.md
+      tipo: referencia
+      area: frontend
+      sistema: central
+      tags: [angular, rotas, componentes, services, guards, design-system]
+      fonte:
+        - frontend/src/app
+      testes:
+        - frontend/src/app
+      tokens_estimados: 419
+      revisado_em: "2026-10-29"
+      intencoes: [tela, componente, frontend, angular, rota, guard, service, scss]
+      secoes:
+        - docs/referencia/frontend/01-indice.md
+        - docs/referencia/frontend/02-1-escopo-e-fontes.md
+        - docs/referencia/frontend/03-2-runtime-e-organizacao.md
+        - docs/referencia/frontend/04-3-bootstrap-e-provedores.md
+        - docs/referencia/frontend/05-4-roteamento/INDEX.md
+        - docs/referencia/frontend/05-4-roteamento/01-4-1-rotas-raiz.md
+        - docs/referencia/frontend/05-4-roteamento/02-4-2-rotas-da-area-principal.md
+        - docs/referencia/frontend/05-4-roteamento/03-4-3-rotas-administrativas.md
+        - docs/referencia/frontend/05-4-roteamento/04-4-4-rotas-de-implantacao.md
+        - docs/referencia/frontend/05-4-roteamento/05-4-4-1-kanban-geral-rotas-de-topo.md
+        - docs/referencia/frontend/05-4-roteamento/06-4-4-2-visoes-gerais-por-setor-e-projetos-do-ciaa.md
+        - docs/referencia/frontend/05-4-roteamento/07-4-5-rotas-de-database.md
+        - docs/referencia/frontend/05-4-roteamento/08-4-6-rotas-de-acessos-empresas.md
+        - docs/referencia/frontend/05-4-roteamento/09-4-7-rotas-de-ideias-melhorias-e-erros.md
+        - docs/referencia/frontend/05-4-roteamento/10-4-8-rotas-do-dashboard-integrado.md
+        - docs/referencia/frontend/05-4-roteamento/11-4-8-1-rotas-de-atendimento-whatsapp.md
+        - docs/referencia/frontend/05-4-roteamento/12-4-9-redirects-ativos.md
+        - docs/referencia/frontend/05-4-roteamento/13-4-10-menu-lateral-sidebar.md
+        - docs/referencia/frontend/05-4-roteamento/14-4-10-1-secao-sistema-funcoes-administrativas-e-operadores.md
+        - docs/referencia/frontend/06-5-features-e-status-de-uso/INDEX.md
+        - docs/referencia/frontend/06-5-features-e-status-de-uso/01-5-1-modulo-acessos-empresas-inventario.md
+        - docs/referencia/frontend/06-5-features-e-status-de-uso/02-comportamentos-que-nao-devem-ser-simplificados.md
+        - docs/referencia/frontend/06-5-features-e-status-de-uso/03-navegacao-registrada-para-o-modulo.md
+        - docs/referencia/frontend/06-5-features-e-status-de-uso/04-5-2-modulo-de-atendimento-whatsapp-inventario.md
+        - docs/referencia/frontend/06-5-features-e-status-de-uso/05-5-2-modulo-de-atendimento-whatsapp-inventario-introducao-par.md
+        - docs/referencia/frontend/06-5-features-e-status-de-uso/06-decisoes-que-a-implementacao-tomou-e-que-o-codigo-explica.md
+        - docs/referencia/frontend/06-5-features-e-status-de-uso/07-navegacao-registrada-para-o-modulo.md
+        - docs/referencia/frontend/07-6-componentes-standalone.md
+        - docs/referencia/frontend/08-7-servicos-do-frontend.md
+        - docs/referencia/frontend/09-8-autenticacao-guards-e-interceptor.md
+        - docs/referencia/frontend/10-9-design-system.md
+        - docs/referencia/frontend/11-10-fluxos-de-dados/INDEX.md
+        - docs/referencia/frontend/11-10-fluxos-de-dados/01-10-1-fluxo-geral.md
+        - docs/referencia/frontend/11-10-fluxos-de-dados/02-10-2-sessao-e-dados-assincronos.md
+        - docs/referencia/frontend/11-10-fluxos-de-dados/03-10-3-busca-e-acervos-locais.md
+        - docs/referencia/frontend/11-10-fluxos-de-dados/04-10-4-chat-e-conhecimento.md
+        - docs/referencia/frontend/11-10-fluxos-de-dados/05-10-5-database.md
+        - docs/referencia/frontend/11-10-fluxos-de-dados/06-10-6-formulario-de-tarefa-projeto-etapa-do-projeto-chamados.md
+        - docs/referencia/frontend/11-10-fluxos-de-dados/07-10-7-atendimento-whatsapp.md
+        - docs/referencia/frontend/12-11-recursos-removidos-e-codigo-dormente.md
+        - docs/referencia/frontend/13-12-limitacoes-atuais-e-riscos-confirmados.md
+        - docs/referencia/frontend/14-13-incertezas-remanescentes.md
+    - nome: backend
+      id: backend
+      caminho: docs/referencia/backend/INDEX.md
+      tipo: referencia
+      area: backend
+      sistema: central
+      tags: [aspnet, controllers, services, di, efcore, jwt]
+      fonte:
+        - backend/Central_BackEnd
+      testes:
+        - backend/Central_BackEnd.Tests
+      tokens_estimados: 399
+      revisado_em: "2026-10-28"
+      intencoes: [backend, controller, service, di, efcore, jwt, csharp]
+      secoes:
+        - docs/referencia/backend/01-indice.md
+        - docs/referencia/backend/02-1-escopo-e-ambiente-de-execucao.md
+        - docs/referencia/backend/03-2-pipeline-di-autenticacao-e-limitacao-de-requisicoes.md
+        - docs/referencia/backend/04-3-controllers-e-endpoints/INDEX.md
+        - docs/referencia/backend/04-3-controllers-e-endpoints/01-3-1-convencoes.md
+        - docs/referencia/backend/04-3-controllers-e-endpoints/02-3-2-auth-acessos-empresas-chat-e-conhecimento.md
+        - docs/referencia/backend/04-3-controllers-e-endpoints/03-3-3-agenda.md
+        - docs/referencia/backend/04-3-controllers-e-endpoints/04-3-4-database-explorer.md
+        - docs/referencia/backend/04-3-controllers-e-endpoints/05-3-5-projetos-e-cards-de-etapa.md
+        - docs/referencia/backend/04-3-controllers-e-endpoints/06-3-6-tarefas.md
+        - docs/referencia/backend/04-3-controllers-e-endpoints/07-3-7-catalogos-e-dashboard-administrativo.md
+        - docs/referencia/backend/04-3-controllers-e-endpoints/08-3-7-1-catalogo-de-colunas-e-visao-do-setor.md
+        - docs/referencia/backend/04-3-controllers-e-endpoints/09-3-8-dashboard-integrado.md
+        - docs/referencia/backend/04-3-controllers-e-endpoints/10-3-9-auditoria.md
+        - docs/referencia/backend/04-3-controllers-e-endpoints/11-3-10-documentacao-sincronizada-docs-api.md
+        - docs/referencia/backend/04-3-controllers-e-endpoints/12-3-10-1-rbac-permissoes-e-gestao-de-operadores.md
+        - docs/referencia/backend/04-3-controllers-e-endpoints/13-3-11-modulo-de-atendimento-whatsapp.md
+        - docs/referencia/backend/05-4-servicos-principais/INDEX.md
+        - docs/referencia/backend/05-4-servicos-principais/01-4-1-autenticacao-acessos-empresas-e-chat-conhecimento.md
+        - docs/referencia/backend/05-4-servicos-principais/02-4-2-implantacao.md
+        - docs/referencia/backend/05-4-servicos-principais/03-4-2-1-kanban-geral-controllers-e-di.md
+        - docs/referencia/backend/05-4-servicos-principais/04-4-2-2-regras-compartilhadas-prazo-atraso-e-perfil-do-operado.md
+        - docs/referencia/backend/05-4-servicos-principais/05-4-3-database-explorer.md
+        - docs/referencia/backend/05-4-servicos-principais/06-4-4-dashboard-integrado.md
+        - docs/referencia/backend/05-4-servicos-principais/07-4-5-modulo-de-atendimento-whatsapp.md
+        - docs/referencia/backend/05-4-servicos-principais/08-4-5-modulo-de-atendimento-whatsapp-introducao-parte-2.md
+        - docs/referencia/backend/05-4-servicos-principais/09-4-5-modulo-de-atendimento-whatsapp-introducao-parte-3.md
+        - docs/referencia/backend/05-4-servicos-principais/10-4-5-1-regras-de-atendimento-implementadas.md
+        - docs/referencia/backend/05-4-servicos-principais/11-4-5-1-1-filtros-e-projecao-do-kanban-fase-07.md
+        - docs/referencia/backend/05-4-servicos-principais/12-4-5-1-2-protocolo-foto-e-telefone-do-contato-fases-0-1-e-fas.md
+        - docs/referencia/backend/05-4-servicos-principais/13-4-5-1-3-finalizacao-automatica-fase-2-do-plano.md
+        - docs/referencia/backend/05-4-servicos-principais/14-4-5-2-integracao-com-o-openwa.md
+        - docs/referencia/backend/05-4-servicos-principais/15-4-5-3-tempo-real-e-indicador-de-digitacao-fase-09.md
+        - docs/referencia/backend/05-4-servicos-principais/16-compatibilidade-com-o-banco-legado-restricao-permanente.md
+        - docs/referencia/backend/05-4-servicos-principais/17-espelhos-legados-do-modulo.md
+        - docs/referencia/backend/06-5-modelos-dbcontext-e-relacionamentos/INDEX.md
+        - docs/referencia/backend/06-5-modelos-dbcontext-e-relacionamentos/01-5-1-dbsets-atuais.md
+        - docs/referencia/backend/06-5-modelos-dbcontext-e-relacionamentos/02-5-2-entidades-e-enums-por-arquivo.md
+        - docs/referencia/backend/06-5-modelos-dbcontext-e-relacionamentos/03-5-2-1-modulo-de-ideias-estado-em-2026-10-12.md
+        - docs/referencia/backend/06-5-modelos-dbcontext-e-relacionamentos/04-5-3-relacoes-criticas.md
+        - docs/referencia/backend/06-5-modelos-dbcontext-e-relacionamentos/05-5-4-modelos-sem-dbset.md
+        - docs/referencia/backend/06-5-modelos-dbcontext-e-relacionamentos/06-5-5-testes-automatizados.md
+        - docs/referencia/backend/07-6-dtos-e-contratos.md
+        - docs/referencia/backend/08-7-migracoes-e-persistencia/INDEX.md
+        - docs/referencia/backend/08-7-migracoes-e-persistencia/01-7-1-historico-ef.md
+        - docs/referencia/backend/08-7-migracoes-e-persistencia/02-7-1-historico-ef-parte-2.md
+        - docs/referencia/backend/08-7-migracoes-e-persistencia/03-7-2-execucao-e-seeds.md
+        - docs/referencia/backend/09-8-fluxos-integrados.md
+        - docs/referencia/backend/10-9-recursos-removidos-e-codigo-dormente.md
+        - docs/referencia/backend/11-10-limitacoes-atuais-e-riscos-confirmados.md
+        - docs/referencia/backend/12-11-incertezas-remanescentes.md
+    - nome: qa-historias
+      id: qa-historias
+      caminho: docs/referencia/qa/INDEX.md
+      tipo: referencia
+      area: qa
+      sistema: central
+      tags: [qa, historias, cenarios, telas, testes]
+      fonte:
+        - frontend/src/app
+        - backend/Central_BackEnd
+      testes:
+        - frontend/src/app
+        - backend/Central_BackEnd.Tests
+      tokens_estimados: 912
+      revisado_em: "2026-10-30"
+      intencoes: [qa, historia, cenario, teste, tela, validacao]
+      secoes:
+        - docs/referencia/qa/01-criterios-transversais-confirmados.md
+        - docs/referencia/qa/02-indice-de-telas-para-ctrl-f/INDEX.md
+        - docs/referencia/qa/02-indice-de-telas-para-ctrl-f/01-introducao.md
+        - docs/referencia/qa/02-indice-de-telas-para-ctrl-f/02-introducao-parte-2.md
+        - docs/referencia/qa/02-indice-de-telas-para-ctrl-f/03-redirecionamentos-ativos.md
+        - docs/referencia/qa/03-1-login-base.md
+        - docs/referencia/qa/04-2-conhecimento-ferramentas/INDEX.md
+        - docs/referencia/qa/04-2-conhecimento-ferramentas/01-cf-01-consultar-conhecimento-resolver.md
+        - docs/referencia/qa/04-2-conhecimento-ferramentas/02-cf-08-gerar-modelo-de-chamado.md
+        - docs/referencia/qa/05-3-implantacao/INDEX.md
+        - docs/referencia/qa/05-3-implantacao/01-im-01-consultar-o-dashboard-de-implantacao.md
+        - docs/referencia/qa/05-3-implantacao/02-im-06-criar-ou-editar-tarefa.md
+        - docs/referencia/qa/06-3-1-kanban-geral.md
+        - docs/referencia/qa/07-3-2-auditoria.md
+        - docs/referencia/qa/08-3-3-sistema-rbac-e-operadores.md
+        - docs/referencia/qa/09-4-database.md
+        - docs/referencia/qa/10-5-empresa-agenda.md
+        - docs/referencia/qa/11-6-admin-kanban-f.md
+        - docs/referencia/qa/12-7-chat-e-conhecimento.md
+        - docs/referencia/qa/13-8-dashboard.md
+        - docs/referencia/qa/14-9-acessos-empresas.md
+        - docs/referencia/qa/15-10-ideias-melhorias-e-erros.md
+        - docs/referencia/qa/16-11-inicio-antigo-planejamento.md
+        - docs/referencia/qa/17-12-atendimento-whatsapp/INDEX.md
+        - docs/referencia/qa/17-12-atendimento-whatsapp/01-wa-01-receber-uma-mensagem-e-abrir-o-atendimento.md
+        - docs/referencia/qa/17-12-atendimento-whatsapp/02-wa-09-administrar-os-numeros-conectados.md
+        - docs/referencia/qa/17-12-atendimento-whatsapp/03-wa-16-gravar-o-status-canonico-da-sessao-sem-estourar-a-colu.md
+        - docs/referencia/qa/17-12-atendimento-whatsapp/04-wa-38-vincular-o-contato-a-empresa-do-erp-fase-01.md
+        - docs/referencia/qa/17-12-atendimento-whatsapp/05-wa-46-alternar-investigacao-sem-mudar-status-responsavel-ou.md
+        - docs/referencia/qa/17-12-atendimento-whatsapp/06-wa-56-sla-critico-destacado-e-filtrado-por-dimensao-fase-07.md
+        - docs/referencia/qa/17-12-atendimento-whatsapp/07-wa-63-atualizacao-em-tempo-real-sem-esperar-o-polling-fase-0.md
+        - docs/referencia/qa/17-12-atendimento-whatsapp/08-wa-70-navegacao-inferior-so-no-mobile-fase-10.md
+        - docs/referencia/qa/17-12-atendimento-whatsapp/09-wa-79-nome-do-grupo-como-titulo-do-card-no-kanban-feature-2.md
+        - docs/referencia/qa/17-12-atendimento-whatsapp/10-wa-86-resolvido-finaliza-sozinho-apos-a-janela-exceto-grupo.md
+        - docs/referencia/qa/17-12-atendimento-whatsapp/11-wa-90-ux-da-tela-de-numeros-filtros-na-url-modal-menu-de-aco.md
+        - docs/referencia/qa/17-12-atendimento-whatsapp/12-wa-91-autoria-modal-de-responsabilidade-negrito-e-ctrl-v.md
+        - docs/referencia/qa/17-12-atendimento-whatsapp/13-wa-95-lightbox-de-midia-e-busca-server-side-fases-5-e-9.md
+        - docs/referencia/qa/17-12-atendimento-whatsapp/14-wa-97-envio-de-video-gif-e-contato-fases-6-e-7-do-plano.md
+        - docs/referencia/qa/17-12-atendimento-whatsapp/15-wa-101-validacoes-409-progresso-e-nota-interna-fases-6-e-7.md
+        - docs/referencia/qa/17-12-atendimento-whatsapp/16-wa-105-reacoes-atras-da-flag-fase-8.md
+        - docs/referencia/qa/17-12-atendimento-whatsapp/17-wa-109-telefone-lid-mencoes-prefixo-tempo-real-e-nova-conversa.md
+        - docs/referencia/qa/17-12-atendimento-whatsapp/18-wa-113-cadastro-manual-de-contato.md
+        - docs/referencia/qa/17-12-atendimento-whatsapp/19-wa-118-contatos-e-iniciar-conversa.md
+        - docs/referencia/qa/18-13-navegacao-por-setor-visoes-gerais-e-base-de-conhecimento-2026-10-22.md
+        - docs/referencia/qa/19-regressao-historico-funcionalidades-desativadas-ou-sem-rota-ativa.md
+        - docs/referencia/qa/20-contagem-final.md
+        - docs/referencia/qa/21-limitacoes-e-pontos-que-nao-puderam-ser-confirmados.md
+        - docs/referencia/qa/22-11-apendice-por-que-cada-tabela-existe.md
+        - docs/referencia/qa/23-arquivos-de-referencia.md
+  operacao:
+    - nome: troubleshooting
+      id: troubleshooting
+      caminho: docs/operacao/troubleshooting/INDEX.md
+      tipo: operacao
+      area: diagnostico
+      sistema: central
+      tags: [erro, diagnostico, cors, iis, sqlserver, login, whatsapp]
+      fonte:
+        - scripts
+        - backend/Central_BackEnd
+        - frontend/src
+      testes: []
+      tokens_estimados: 607
+      revisado_em: "2026-10-29"
+      intencoes: [erro, falha, 500, 401, cors, iis, login, migration, whatsapp]
+      secoes:
+        - docs/operacao/troubleshooting/01-a-ndice.md
+        - docs/operacao/troubleshooting/02-1-regras-de-segurana-a-e-ordem-de-diagna-stico.md
+        - docs/operacao/troubleshooting/03-2-dependa-ncias-e-ambiente.md
+        - docs/operacao/troubleshooting/04-3-angular-serve-e-build.md
+        - docs/operacao/troubleshooting/05-4-backend-net.md
+        - docs/operacao/troubleshooting/06-5-sql-server-e-inmemory.md
+        - docs/operacao/troubleshooting/07-6-migrations-ef-core/INDEX.md
+        - docs/operacao/troubleshooting/07-6-migrations-ef-core/01-fatos-confirmados.md
+        - docs/operacao/troubleshooting/07-6-migrations-ef-core/02-sintomas-causas-e-solua-a-es.md
+        - docs/operacao/troubleshooting/07-6-migrations-ef-core/03-fluxo-seguro.md
+        - docs/operacao/troubleshooting/08-7-autenticaa-a-o-cookie-e-refresh.md
+        - docs/operacao/troubleshooting/09-8-cors.md
+        - docs/operacao/troubleshooting/10-9-database-explorer.md
+        - docs/operacao/troubleshooting/11-10-acessos-empresas.md
+        - docs/operacao/troubleshooting/12-11-chat-e-conhecimento.md
+        - docs/operacao/troubleshooting/13-12-dashboard-integrado-contra-o-banco-legado-compat-100.md
+        - docs/operacao/troubleshooting/14-13-iis-e-publicaa-a-o.md
+        - docs/operacao/troubleshooting/15-14-smoke-test.md
+        - docs/operacao/troubleshooting/16-15-locking-de-arquivos.md
+        - docs/operacao/troubleshooting/17-16-checklist-de-encerramento.md
+        - docs/operacao/troubleshooting/19-18-prazo-atraso-e-perfil-do-operador.md
+        - docs/operacao/troubleshooting/20-19-gateway-openwa-canal-de-whatsapp/INDEX.md
+        - docs/operacao/troubleshooting/20-19-gateway-openwa-canal-de-whatsapp/01-19-1-npm-e-github-falham-dns-na-o-configurado-no-host.md
+        - docs/operacao/troubleshooting/20-19-gateway-openwa-canal-de-whatsapp/02-19-2-todo-envio-falha-com-the-engine-returned-no-message-pat.md
+        - docs/operacao/troubleshooting/20-19-gateway-openwa-canal-de-whatsapp/03-19-3-o-servia-o-na-o-sobe-ou-a-api-na-o-responde.md
+        - docs/operacao/troubleshooting/20-19-gateway-openwa-canal-de-whatsapp/04-19-4-o-webhook-do-gateway-a-recusado.md
+        - docs/operacao/troubleshooting/20-19-gateway-openwa-canal-de-whatsapp/05-19-4-1-aviso-de-sistema-da-meta-vira-atendimento.md
+        - docs/operacao/troubleshooting/20-19-gateway-openwa-canal-de-whatsapp/06-19-5-a-fila-de-webhook-cresce-e-nada-a-processado.md
+        - docs/operacao/troubleshooting/20-19-gateway-openwa-canal-de-whatsapp/07-19-6-checklist-do-canal.md
+        - docs/operacao/troubleshooting/20-19-gateway-openwa-canal-de-whatsapp/08-19-7-porta-publicada-pelo-docker-ignora-o-ufw.md
+        - docs/operacao/troubleshooting/20-19-gateway-openwa-canal-de-whatsapp/09-19-8-chave-da-api-do-openwa-com-valor-vazado-no-log.md
+        - docs/operacao/troubleshooting/20-19-gateway-openwa-canal-de-whatsapp/12-19-11-reset-dos-dados-do-modulo-whatsapp.md
+        - docs/operacao/troubleshooting/20-19-gateway-openwa-canal-de-whatsapp/13-19-12-numero-nao-exclui-conflito-de-fk-grupos-e-participante.md
+        - docs/operacao/troubleshooting/20-19-gateway-openwa-canal-de-whatsapp/14-19-13-protocolo-foto-telefone-do-contato-coluna-ausente-apos.md
+        - docs/operacao/troubleshooting/20-19-gateway-openwa-canal-de-whatsapp/15-19-14-atendimento-resolvido-nao-finaliza-sozinho-fase-2.md
+        - docs/operacao/troubleshooting/20-19-gateway-openwa-canal-de-whatsapp/16-19-15-foto-do-contato-nao-aparece-fase-3.md
+        - docs/operacao/troubleshooting/21-20-login-500-apos-deploy-do-rbac-schema-e-tipo-de-cargo-nivel.md
+        - docs/operacao/troubleshooting/22-arquivos-relacionados.md
+        - docs/operacao/troubleshooting/23-segredos-no-reposita-rio.md
+    - nome: deploy
+      id: deploy
+      caminho: docs/operacao/deploy/INDEX.md
+      tipo: operacao
+      area: deploy
+      sistema: central
+      tags: [deploy, iis, publicacao, migration, backup, rollback, smoke]
+      fonte:
+        - scripts/deploy/deploy.ps1
+        - scripts/preflight-schema.ps1
+        - scripts/smoke.ps1
+      testes: []
+      tokens_estimados: 608
+      revisado_em: "2026-10-28"
+      intencoes: [deploy, publicar, iis, migration, backup, rollback, smoke, producao]
+      secoes:
+        - docs/operacao/deploy/01-indice.md
+        - docs/operacao/deploy/02-1-escopo-e-regra-de-ouro.md
+        - docs/operacao/deploy/03-2-fonte-de-verdade-e-estrutura.md
+        - docs/operacao/deploy/04-3-pre-requisitos.md
+        - docs/operacao/deploy/05-4-ambientes-portas-e-chat-conhecimento-reverse-proxy.md
+        - docs/operacao/deploy/06-5-estrutura-do-iis.md
+        - docs/operacao/deploy/07-6-pipeline-obrigatorio.md
+        - docs/operacao/deploy/08-7-migrations-antes-da-publicacao/INDEX.md
+        - docs/operacao/deploy/08-7-migrations-antes-da-publicacao/01-regras.md
+        - docs/operacao/deploy/08-7-migrations-antes-da-publicacao/02-gate.md
+        - docs/operacao/deploy/08-7-migrations-antes-da-publicacao/03-gate-parte-2.md
+        - docs/operacao/deploy/08-7-migrations-antes-da-publicacao/04-migration-do-modulo-acessos-empresas-20260928212856-acessose.md
+        - docs/operacao/deploy/08-7-migrations-antes-da-publicacao/05-migration-aplicada-20260929034944-kanbangeral-setoresetapasb.md
+        - docs/operacao/deploy/08-7-migrations-antes-da-publicacao/06-20260929034944-kanbangeral-setoresetapasbloqueios-em-detalhe.md
+        - docs/operacao/deploy/08-7-migrations-antes-da-publicacao/07-migration-do-eixo-setor-funcao-20260929221556-setorparafunca.md
+        - docs/operacao/deploy/08-7-migrations-antes-da-publicacao/08-migration-20260930132443-acessosgrupoclienteerp-grupos-do-ac.md
+        - docs/operacao/deploy/08-7-migrations-antes-da-publicacao/09-migration-pendente-no-banco-de-producao-20260928182047-leadc.md
+        - docs/operacao/deploy/09-8-regras-de-package-e-publicacao.md
+        - docs/operacao/deploy/10-9-build-info-e-hash.md
+        - docs/operacao/deploy/11-10-preservacao-de-configuracao.md
+        - docs/operacao/deploy/12-11-backup-e-rollback.md
+        - docs/operacao/deploy/13-12-branches-tags-e-versionamento.md
+        - docs/operacao/deploy/14-13-troubleshooting-de-deploy.md
+        - docs/operacao/deploy/15-14-limites-conhecidos-e-fatos-corrigidos.md
+        - docs/operacao/deploy/16-15-checklist-de-conclusao.md
+        - docs/operacao/deploy/17-arquivos-relacionados.md
+  # Fonte do mapa: docs/README.md, § "Matriz 'necessidade → documento'" (linhas 24-34).
+    - nome: setup-local
+      id: setup-local
+      caminho: docs/operacao/setup-local.md
+      tipo: operacao
+      area: setup
+      sistema: central
+      tags: [setup, ambiente, local, dotnet, angular]
+      fonte:
+        - scripts/validate.ps1
+        - frontend/angular.json
+        - backend/Central_BackEnd/Program.cs
+      testes:
+        - docs/
+      tokens_estimados: 2945
+      revisado_em: "2026-10-29"
+      secoes: []
+      intencoes: [setup, ambiente local, dotnet watch, ng serve, porta ocupada, cors local]
+    - nome: iis-setup
+      id: iis-setup
+      caminho: docs/operacao/iis-setup.md
+      tipo: operacao
+      area: deploy
+      sistema: central
+      tags: [iis, deploy, servidor, webconfig]
+      fonte:
+        - scripts/deploy/deploy.ps1
+        - scripts/preflight-schema.ps1
+      testes:
+        - docs/
+      tokens_estimados: 1908
+      revisado_em: "2026-10-29"
+      secoes: []
+      intencoes: [iis, servidor, publicacao, webconfig]
+    - nome: auditoria-seguranca
+      id: auditoria-seguranca
+      caminho: docs/operacao/auditoria-segurança.md
+      tipo: operacao
+      area: seguranca
+      sistema: central
+      tags: [auditoria, seguranca, riscos]
+      fonte:
+        - backend/Central_BackEnd/Services
+        - scripts
+      testes:
+        - docs/
+      tokens_estimados: 3369
+      revisado_em: "2026-10-29"
+      secoes: []
+      intencoes: [auditoria, seguranca, riscos, revisao]
+    - nome: instalacao-openwa
+      id: instalacao-openwa
+      caminho: docs/operacao/instalacao-openwa/INDEX.md
+      tipo: operacao
+      area: operacao
+      sistema: central
+      tags: [openwa, gateway, whatsapp, docker]
+      fonte:
+        - backend/Central_BackEnd/Services/WhatsApp
+        - scripts
+      testes:
+        - docs/
+      tokens_estimados: 656
+      revisado_em: "2026-10-29"
+      secoes:
+        - docs/operacao/instalacao-openwa/INDEX.md
+        - docs/operacao/instalacao-openwa/01-1-onde-o-gateway-roda.md
+        - docs/operacao/instalacao-openwa/02-2-pre-requisitos-e-estado-real-da-vm.md
+        - docs/operacao/instalacao-openwa/03-3-instalacao-caminho-docker-executado.md
+        - docs/operacao/instalacao-openwa/04-4-rede-e-firewall-a-parte-que-engana.md
+        - docs/operacao/instalacao-openwa/05-5-webhook-um-gateway-um-webhook-por-sessao.md
+        - docs/operacao/instalacao-openwa/06-6-schema-no-sql-server.md
+        - docs/operacao/instalacao-openwa/07-7-configurar-o-backend-no-iis-web-config.md
+        - docs/operacao/instalacao-openwa/08-8-variaveis-do-backend-central.md
+        - docs/operacao/instalacao-openwa/09-9-prova-tecnica-o-que-foi-verificado-o-que-falta-e-o-ciclo-d.md
+        - docs/operacao/instalacao-openwa/10-10-backup-restauracao-e-atualizacao.md
+        - docs/operacao/instalacao-openwa/11-11-riscos.md
+        - docs/operacao/instalacao-openwa/12-12-referencias.md
+      intencoes: [openwa, gateway, whatsapp, docker, webhook]
+
+modulos:
+  - nome: Acessos Empresas
+    id: acessos
+    ficha: docs/modulos/acessos.md
+    tipo: modulo
+    area: acessos
+    sistema: central
+    tags: [acessos, clientes, senhas, gate, cifra, auditoria]
+    fonte:
+      - backend/Central_BackEnd/Controllers/AcessosController.cs
+      - backend/Central_BackEnd/Services/Acessos
+      - frontend/src/app/features/acessos
+    testes:
+      - backend/Central_BackEnd.Tests
+      - frontend/src/app/features/acessos/pages/form-cliente-modal/form-cliente-modal.component.spec.ts
+    tokens_estimados: 1981
+    revisado_em: "2026-10-29"
+    secoes: []
+    intencoes: [acessos, cliente, unidade, senha, rdp, vpn, anydesk, banco, actyon]
+    status: ativo
+    verificado_em: febe0b5          # frontmatter da própria ficha (verificação da Fase 2b)
+    resumo: unidades/filiais de clientes e credenciais de acesso (RDP, VPN, AnyDesk, Banco, Actyon Web), com gate de senha, cifra e auditoria (ficha § 1)
+    rotas:
+      - /acessos
+      - /acessos/clientes
+      - /acessos/clientes/tabela
+      - /acessos/clientes/novo
+      - /acessos/clientes/:id
+      # ficha § 2; fonte original: docs/referencia/frontend.md § 4.6
+    endpoints:
+      controller: backend/Central_BackEnd/Controllers/AcessosController.cs
+      base: /api/v1/acessos
+      operacoes: 31   # ficha § 3; contagem confirmada no código na Fase 2b (Select-String [Http*] = 31); divergência com banco-dados.md (32) registrada na ficha § 10
+      grupos:
+        - gate-de-senha           # POST /clientes/{id}/autorizar (ficha § 3)
+        - diagnostico             # GET /estado-cifra (ficha § 3)
+        - grupos                  # GET /grupos, somente leitura (ficha § 3)
+        - clientes                # GET/POST/PUT/DELETE /clientes + /clientes/busca-erp (ficha § 3)
+        - tipos-de-acesso         # rdp, vpn, anydesk, banco, actyon-web — 4 rotas × 5 tipos (ficha § 3)
+        - revelacao-de-senha      # GET /rdp/{id}/senha, GET /vpn/{id}/senha (ficha § 3)
+    tabelas:
+      - tbclienteacesso           # ClienteAcesso, nível 2 (ficha § 4)
+      - tbacessordp               # AcessoRdp (ficha § 4)
+      - tbacessovpn               # AcessoVpn (ficha § 4)
+      - tbacessoanydesk           # AcessoAnyDesk (ficha § 4)
+      - tbacessobanco             # AcessoBanco (ficha § 4)
+      - tbacessoactyonweb         # AcessoActyonWeb, sem senha (ficha § 4)
+      - tbauditoriaacesso         # AuditoriaAcesso, trilha de revelação (ficha § 4)
+    serviços_backend:
+      - AcessosService            # ficha § 5 (docs/referencia/backend.md § 4.1)
+      - AcessoTicketService       # ficha § 5 (ticket do gate)
+      - PasswordValidationService # ficha § 5 (validação do gate)
+      - BruteForceGuard           # ficha § 5 (bloqueio por tentativas)
+      - CifradorAesGcm            # ICifrador ativo no DI desde 2026-10-28 (ficha § 5; ADR 005)
+      - CifradorEmBranco          # implementação de teste/fallback, não registrada (ficha § 5; ADR 005)
+      - RequerTicketAcessoAttribute # ficha § 5 (exige X-Acesso-Ticket)
+    serviços_frontend:
+      - AcessosService            # features/acessos/acessos.service.ts (ficha § 5)
+      - SenhaGateService          # exigir() por operação sensível (ficha § 5)
+      - acessos-badge.service     # badge do menu (ficha § 5)
+    decisoes:
+      - docs/decisoes/002-criptografia-desligada.md   # decisão anterior, substituída pelo ADR 005
+      - docs/decisoes/005-cifra-aes-ativa.md          # CifradorAesGcm ativo (ficha § 10)
+    cenários_qa:
+      - CF-04                     # ficha § 8
+      - CF-12                     # ficha § 8
+
+  - nome: Kanban Geral
+    id: kanban
+    ficha: docs/modulos/kanban.md
+    tipo: modulo
+    area: implantacao
+    sistema: central
+    tags: [kanban, tarefa, projeto, funcao, bloqueio, gargalo]
+    fonte:
+      - backend/Central_BackEnd/Controllers/KanbanController.cs
+      - backend/Central_BackEnd/Services/Implantacao
+      - frontend/src/app/features/implantacao/pages/kanban
+    testes:
+      - backend/Central_BackEnd.Tests
+      - frontend/src/app/features/implantacao/pages/kanban/kanban.component.spec.ts
+    tokens_estimados: 1999
+    revisado_em: "2026-10-29"
+    secoes: []
+    intencoes: [kanban, tarefa, projeto, coluna, funcao, bloqueio, gargalo, implantacao]
+    status: ativo
+    verificado_em: febe0b5          # frontmatter da própria ficha (verificação da Fase 2b)
+    resumo: quadro único da operação com eixo na função (tbfuncao); cards de tarefa e projeto, catálogo de colunas compartilhado com visão por setor, bloqueios como atributo, gargalos e administração do quadro (ficha § 1)
+    rotas:
+      - /kanban
+      - /kanban/gargalos
+      - /kanban/configurar
+      - /kanban/admin/colunas
+      # ficha § 2; fonte original: docs/referencia/frontend.md § 4.4.1
+    endpoints:
+      controllers:
+        - nome: FuncoesController        # 1 operação, somente leitura (ficha § 3)
+        - nome: EtapasFuncaoController   # 6 operações; escrita Administrador (ficha § 3)
+        - nome: BloqueiosController      # 3 operações (ficha § 3)
+        - nome: GargalosController       # 1 operação, leitura aberta (ficha § 3)
+        - nome: KanbanController         # 2 operações; GET /board e POST /cards/{tipo}/{id}/coluna (ficha § 3)
+      relacionados:
+        - ColunasKanbanController        # /implantacao/colunas-kanban, 6 operações: catálogo + visão do setor (ficha § 3)
+        - PATCH /implantacao/projetos/{id}/coluna  # mesmo KanbanBoardService (ficha § 3)
+    tabelas:
+      - tbfuncao                  # Funcao, eixo do quadro; 4 linhas (ficha § 4)
+      - tbcolunafuncao           # ColunaFuncao, visão do setor sobre o catálogo (ficha § 4)
+      - tbcolunakanban            # ColunaKanban, catálogo compartilhado de colunas (ficha § 4)
+      - tbtarefa                  # card de tarefa; TRF_FuncaoId, TRF_EtapaTemplateId (ficha § 4)
+      - tbprojeto                 # card de projeto; PRJ_FuncaoId (ficha § 4)
+      - tbfuncaoetapa             # EtapaFuncao, catálogo fixo (ficha § 4)
+      - tbbloqueio                # Bloqueio como atributo (ficha § 4)
+      - tboperador                # fonte da função do operador (ficha § 4)
+    serviços_backend:
+      - FuncaoAuthorizationService # ficha § 5 (fonte da verdade da permissão)
+      - KanbanBoardService         # ficha § 5 (board e MoverCardAsync)
+      - BloqueioService            # ficha § 5
+      - FuncaoService              # ficha § 5
+      - EtapaFuncaoService         # ficha § 5
+    serviços_frontend:
+      - KanbanComponent            # ficha § 5 (modo geral × legado)
+      - funcao-visual.config       # cor por CLASSIFICACAO (ficha § 5)
+      - GargalosComponent          # ficha § 5
+      - AdminColunasComponent      # ficha § 5
+    decisoes:
+      - docs/decisoes/001-setor-para-funcao.md   # eixo Setor → Função (ficha § 1)
+    cenários_qa:
+      - KG-01                      # ficha § 8
+      - KG-02                      # ficha § 8
+      - KG-03                      # ficha § 8
+
+  - nome: Dashboard Integrado
+    id: dashboard
+    ficha: docs/modulos/dashboard.md
+    tipo: modulo
+    area: dashboard
+    sistema: central
+    tags: [dashboard, kpi, comercial, lead, proposta, administrativo, financeiro, custo, orcamento]
+    fonte: [backend/Central_BackEnd/Controllers/Dashboard, backend/Central_BackEnd/Services/Dashboard, backend/Central_BackEnd/Models/Dashboard, frontend/src/app/features/dashboard]
+    testes: [backend/Central_BackEnd.Tests/DashboardServicosTests.cs]
+    tokens_estimados: 1972
+    revisado_em: "2026-10-29"
+    secoes: []
+    intencoes: [dashboard, kpi, comercial, lead, proposta, administrativo, financeiro, custo, orcamento, contrato]
+    status: ativo
+    resumo: "visões Comercial, Administrativo e Financeiro sobre o legado e o funil; faturamento desligado por decisão"
+
+  - nome: Auth, RBAC e Sistema
+    id: auth-rbac-sistema
+    ficha: docs/modulos/auth-rbac-sistema.md
+    tipo: modulo
+    area: seguranca
+    sistema: central
+    tags: [auth, login, jwt, refresh, rbac, permissao, cargo, operador, auditoria, sistema]
+    fonte: [backend/Central_BackEnd/Controllers/AuthController.cs, backend/Central_BackEnd/Authorization/PermissaoPolicyProvider.cs, backend/Central_BackEnd/Services/Permissoes/PermissaoService.cs, frontend/src/app/core/services/auth.service.ts, frontend/src/app/core/guards/permissao.guard.ts, frontend/src/app/features/sistema]
+    testes: [backend/Central_BackEnd.Tests/Api/AuthContratosTests.cs, backend/Central_BackEnd.Tests/Api/PermissoesContratosTests.cs, backend/Central_BackEnd.Tests/PermissoesServiceTests.cs, backend/Central_BackEnd.Tests/OperadorAdminServiceTests.cs]
+    tokens_estimados: 1997
+    revisado_em: "2026-10-29"
+    secoes: []
+    intencoes: [login, jwt, cookie, refresh, 401, 403, permissao, rbac, cargo, operador, auditoria, sistema]
+    status: ativo
+    resumo: "autenticação JWT + refresh em cookie, matriz de permissão por cargo e CRUD de operador"
+
+  - nome: Database Explorer
+    id: database-explorer
+    ficha: docs/modulos/database-explorer.md
+    tipo: modulo
+    area: dados
+    sistema: central
+    tags: [database, sqlserver, schema, tabela, coluna, indice, procedure, trigger, comparacao]
+    fonte: [backend/Central_BackEnd/Controllers/Database/DatabaseController.cs, backend/Central_BackEnd/Services/Database, frontend/src/app/features/database]
+    testes: [backend/Central_BackEnd.Tests/DatabaseSchemaComparisonParseTests.cs]
+    tokens_estimados: 2000
+    revisado_em: "2026-10-29"
+    secoes: []
+    intencoes: [database, explorador, tabela, coluna, schema, procedure, trigger, comparacao, script]
+    status: ativo
+    resumo: "leitura de metadados do SQL Server, relacionamentos, comparação de schema e geração/validação de script"
+
+  - nome: Agenda
+    id: agenda
+    ficha: docs/modulos/agenda.md
+    tipo: modulo
+    area: agenda
+    sistema: central
+    tags: [agenda, evento, compromisso, recorrencia, serie, conflito, operador]
+    fonte: [backend/Central_BackEnd/Controllers/AgendaController.cs, backend/Central_BackEnd/Services/Implantacao/AgendaService.cs, backend/Central_BackEnd/Models/Implantacao/AgendaItem.cs, frontend/src/app/features/agenda]
+    testes: [backend/Central_BackEnd.Tests/AgendaRecorrenciaTests.cs, backend/Central_BackEnd.Tests/AgendaVisibilidadeTests.cs, frontend/src/app/features/agenda/agenda.component.spec.ts]
+    tokens_estimados: 1896
+    revisado_em: "2026-10-28"
+    secoes: []
+    intencoes: [agenda, evento, compromisso, recorrencia, serie, conflito, visibilidade]
+    status: ativo
+    resumo: "compromissos por operador/função com recorrência, série e conflito de horário"
+
+  - nome: Chat e Conhecimento
+    id: chat-conhecimento
+    ficha: docs/modulos/chat-conhecimento.md
+    tipo: modulo
+    area: conhecimento
+    sistema: central
+    tags: [chat, rag, conhecimento, documento, revisao, gitea, anythingllm, sso, tbdoc]
+    fonte: [backend/Central_BackEnd/Controllers/ChatSsoController.cs, backend/Central_BackEnd/Controllers/ConhecimentoController.cs, backend/Central_BackEnd/Services/Conhecimento, backend/Central_BackEnd/Services/Shared/DocumentosService.cs, frontend/src/app/features/chat/chat-iframe.component.ts, frontend/src/app/features/conhecimento, scripts/knowledge-sync/sync.py, scripts/knowledge-sync/trigger_server.py]
+    testes: [backend/Central_BackEnd.Tests/ConhecimentoPathPolicyTests.cs, backend/Central_BackEnd.Tests/DocumentosServiceTests.cs, scripts/knowledge-sync/test_sync.py, frontend/src/app/features/conhecimento/conhecimento-admin.component.spec.ts]
+    tokens_estimados: 1900
+    revisado_em: "2026-11-03"
+    secoes: []
+    intencoes: [chat, rag, agente, conhecimento, documento, revisao, gitea, tbdoc]
+    status: ativo
+    resumo: "chat com agentes/RAG e revisão de documentos do conhecimento, com permissão de revisor"
+
+  - nome: Ideias, Melhorias e Erros
+    id: ideias
+    ficha: docs/modulos/ideias.md
+    tipo: modulo
+    area: ideias
+    sistema: central
+    tags: [ideias, melhorias, erros, sugestao, kanban, aprovacao, ia, especificacao]
+    fonte: [backend/Central_BackEnd/Controllers/IdeiasController.cs, backend/Central_BackEnd/Services/Ideias, backend/Central_BackEnd/Models/Ideias, frontend/src/app/features/ideias]
+    testes: [backend/Central_BackEnd.Tests/IdeiasCicloDeVidaTests.cs, backend/Central_BackEnd.Tests/IdeiasKanbanTests.cs, backend/Central_BackEnd.Tests/IdeiasAutorizacaoTests.cs, frontend/src/app/features/ideias/pages/lista/lista-ideias.component.spec.ts]
+    tokens_estimados: 2000
+    revisado_em: "2026-10-29"
+    secoes: []
+    intencoes: [ideias, melhoria, erro, sugestao, aprovacao, especificacao]
+    status: ativo
+    resumo: "sugestões, melhorias e relatos de erro com ciclo de status, IA e aprovação que cria uma tarefa no Kanban"
+
+  - nome: Atendimento WhatsApp
+    id: whatsapp
+    ficha: docs/modulos/whatsapp.md
+    tipo: modulo
+    area: atendimento
+    sistema: central
+    tags: [whatsapp, atendimento, kanban, numero, webhook, sla, metrica, etiqueta]
+    fonte: [backend/Central_BackEnd/Controllers/WhatsApp, backend/Central_BackEnd/Services/WhatsApp, backend/Central_BackEnd/Models/WhatsApp, frontend/src/app/features/whatsapp]
+    testes: [backend/Central_BackEnd.Tests/WhatsAppAtendimentoTests.cs, backend/Central_BackEnd.Tests/Api/PermissoesContratosTests.cs, frontend/src/app/features/whatsapp/pages/kanban/whatsapp-kanban.component.spec.ts]
+    tokens_estimados: 2000
+    revisado_em: "2026-11-03"
+    secoes: []
+    intencoes: [whatsapp, atendimento, conversa, fila, numero, qr, webhook, sla, metrica, etiqueta, retencao]
+    status: ativo
+    resumo: "fila e Kanban de atendimento, conversa, números/QR, métricas/SLA, webhook OpenWA, etiquetas e retenção"
+
+decisoes:
+  - id: 001
+    titulo: "ADR 001 — Eixo do Kanban Geral: Setor → Função"
+    caminho: docs/decisoes/001-setor-para-funcao.md
+    status: aceito        # frontmatter do arquivo
+  - id: 002
+    titulo: "ADR 002 — Criptografia do Acessos Empresas desligada (CifradorEmBranco)"
+    caminho: docs/decisoes/002-criptografia-desligada.md
+    status: substituido   # frontmatter do arquivo; substituído pelo ADR 005
+  - id: 003
+    titulo: "ADR 003 — Produção sem staging"
+    caminho: docs/decisoes/003-sem-staging.md
+    status: aceito        # frontmatter do arquivo
+  - id: 004
+    titulo: "ADR 004 — RBAC: permissão por recurso e por função, com herança de grupo e exceção individual"
+    caminho: docs/decisoes/004-rbac.md
+    status: aceito        # frontmatter do arquivo
+  - id: 005
+    titulo: "ADR 005 — Cifra AES-256-GCM ativa no Acessos Empresas"
+    caminho: docs/decisoes/005-cifra-aes-ativa.md
+    status: aceito        # frontmatter do arquivo
+
+glossario:
+  id: glossario
+  caminho: docs/glossario.md
+  tipo: referencia
+  area: glossario
+  sistema: central
+  tags: [glossario, termos]
+  fonte:
+    - docs/glossario.md
+  testes: []
+  tokens_estimados: 1449
+  revisado_em: "2026-10-28"
+  secoes: []
+  intencoes: [termo, glossario, significado]
+  status: canônico
+  termos:
+    - Função
+    - Bloqueio
+    - "Setor (histórico)"
+    - "Prefixos de coluna do módulo Acessos (CAO_/RDP_/VPN_/ADK_/BCO_/AWB_)"
+    - Cifrador
+    - Ticket de acesso
+    - "Soft delete"
+    - "Paginado<T>"
+    - Perfil
+  # Nomes dos headings; fonte: docs/glossario.md § 2.2 do plano / headings do próprio arquivo.
+
+planos_rbac:
+  - caminho: docs/planos/rbac-fechamento.md
+    papel: "documento único do RBAC e navegação por setor: estado real verificado em 2026-11-05, backlog e registro de execução (ADR 004)"
